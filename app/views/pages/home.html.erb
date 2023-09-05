@@ -1,0 +1,55 @@
+<div class="home-container">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://c4.wallpaperflare.com/wallpaper/66/25/239/machine-grey-background-volvo-wallpaper-preview.jpg);">
+    <div class="container">
+      <h1>At Wheely-Share <strong>Rent</strong> the <strong>Best Car !</strong></h1>
+      <p>Change your life and learn to code at one of our campuses around the world.</p>
+      <%= link_to "View all cars", cars_path, class: "btn btn-flat" %>
+    </div>
+  </div>
+
+  <div class="info-container">
+    <%= simple_form_for :search, url: cars_path, method: :get do |f| %>
+      <div class="search-form-control form-group row">
+        <div class="col">
+          <%= f.input :query, label: false, placeholder: 'Search...', input_html: { class: 'form-control string required' } %>
+        </div>
+         <div class="col-6 mx-auto">
+              <%= f.input :date_range, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label: false,
+                input_html: { placeholder: 'Date range', data: { controller: "flatpickr" }} %>
+            </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+            <%= f.submit 'Search', class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="container">
+    <% @cars.each_slice(2) do |car_pair|%>
+      <div class="row mb-3">
+      <% car_pair.each do |car| %>
+        <div class="col">
+          <div class="card-product">
+            <%= image_tag url_for(car.photo) if car.photo.attached? %>
+            <div class=" card-product-infos">
+              <h2><%= car.brand %></h2>
+              <%= link_to "Book now", car_path(car), class: "btn btn-flat" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+    <div class="my-button">
+      <%= link_to "View more", cars_path, class: "btn btn-flat" %>
+    </div>
+  </div>
+
+</div>

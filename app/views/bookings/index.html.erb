@@ -1,0 +1,27 @@
+
+
+<div class="container">
+  <% @bookings.each do |booking| %>
+    <div class="row mb-3">
+      <div class="col">
+        <div class="row">
+          <div class="col-9">
+            <div class="card-product">
+              <%= image_tag url_for(booking.car.photo) if booking.car.photo.attached? %>
+              <div class="card-product-infos">
+                <h2><%= booking.car.brand %></h2>
+                <p><strong>Status </strong> : <%= booking.accepted ? "confirmed" : "pending" %></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 align-self-center">
+            <div class="my-button">
+              <%= link_to "View Booking", car_path(booking.car), class: "btn btn-flat" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

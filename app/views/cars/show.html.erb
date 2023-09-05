@@ -1,0 +1,41 @@
+<div class="show-container">
+    <div class="row mb-3">
+      <div class="card-product">
+        <%= image_tag url_for(@car.photo) if @car.photo.attached? %>
+        <div class="card-product-infos">
+          <h2><%= @car.brand %></h2>
+          <p>
+            <strong> Model :</strong> <%= @car.model  %> <br>
+            <strong> Year :</strong> <%= @car.year_of_production %> <br>
+            <strong> address :</strong> <%= @car.address %> <br>
+            <strong> Price :</strong> <%= @car.price_per_day.to_f %> <br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% if current_user.bookings.where(car_id: @car.id).empty?%>
+      <div class="row ">
+        <%= simple_form_for :booking, url: car_bookings_path(@car) do |f| %>
+          <div class="search-form-control form-group row">
+            <div class="col-6 mx-auto">
+              <%= f.input :date_range, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label: false,
+                input_html: { placeholder: 'Date range', data: { controller: "flatpickr" }} %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="text-center">
+              <%= link_to 'View Car list', cars_path, class: "btn btn-primary" %>
+                <%= f.submit 'Book now', class: "btn btn-primary" %>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <p>You have already booked this car</p>
+      </div>
+    <% end %>
+</div>
