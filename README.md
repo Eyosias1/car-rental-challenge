@@ -21,8 +21,6 @@ La suppression d'un utilisateur doit entraîner la suppression de ses voitures e
 
 ## Interface utilisateur
 
-Effectuez les modifications du code nécessaires à l'implémentation des parcours utilisateurs suivants :
-
 - En tant qu'utilisateur, je peux accéder à la page d'accueil.
 - En tant qu'utilisateur, je peux voir la liste de toutes les voitures.
 - En tant qu'utilisateur, je peux accéder aux détails d'une voiture.
