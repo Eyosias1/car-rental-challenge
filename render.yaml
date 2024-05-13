@@ -1,5 +1,5 @@
 databases:
-  - name: postgres2
+  - name: postgres
     ipAllowList: []
     plan: free
 
