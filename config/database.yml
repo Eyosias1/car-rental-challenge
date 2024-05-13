@@ -84,3 +84,4 @@ production:
   database: _Rent_Cars_Eyos_production
   username: _Rent_Cars_Eyos
   password: <%= ENV["_RENT_CARS_EYOS_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
